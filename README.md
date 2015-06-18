@@ -1,4 +1,16 @@
 # Nock
+## path-regex branch
+This is a response to issue #135. Will allow user to give regular expression as the path to match. For example:
+```js
+var pathRegex = /\/users\/([0-9]+)/;
+nock('http://example.com')
+    .get(pathRegex)
+    .reply(200, function(uri, reqBody) {
+            var userId = pathRegex.exec(uri)[1];
+            return somethingBasedOnId(userId);
+     });
+```
+----------------------------
 
 [![By](https://img.shields.io/badge/made%20by-yld!-32bbee.svg?style=flat-square)](http://yld.io/contact?source=github-nock)
 [![Build Status](https://secure.travis-ci.org/pgte/nock.png)](http://travis-ci.org/pgte/nock)
